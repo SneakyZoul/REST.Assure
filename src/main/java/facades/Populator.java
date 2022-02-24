@@ -9,6 +9,8 @@ import dtos.MovieDTO;
 import entities.Movie;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import utils.EMF_Creator;
 
 /**
@@ -17,7 +19,8 @@ import utils.EMF_Creator;
  */
 public class Populator {
     public static void populate(){
-        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("puTest");
         MovieFacade fe = MovieFacade.getFacadeExample(emf);
         fe.create(new MovieDTO(new Movie("First 1","22" )));
         fe.create(new MovieDTO(new Movie("First 2", "12")));
