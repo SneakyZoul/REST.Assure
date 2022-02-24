@@ -89,7 +89,7 @@ public class MovieResourceTest {
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/Movie/").then()
+                .get("/movie/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
@@ -99,7 +99,7 @@ public class MovieResourceTest {
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/Movie/count").then()
+                .get("/movie/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("count", equalTo(2));
@@ -108,7 +108,7 @@ public class MovieResourceTest {
     public void testGetAllMovie()throws Exception{
         given()
                 .contentType("application/jason")
-                .get("/Movie/all").then()
+                .get("/movie/all").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("all",equalTo(mf.getAll()));
