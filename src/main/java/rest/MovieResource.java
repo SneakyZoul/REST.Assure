@@ -28,7 +28,7 @@ public class MovieResource {
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getMoiveCount() {
+    public String getMovieCount() {
        
         long count = FACADE.getRenameMeCount();
         //System.out.println("--------------->"+count);
