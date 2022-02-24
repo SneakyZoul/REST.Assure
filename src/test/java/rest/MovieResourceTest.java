@@ -28,7 +28,7 @@ public class MovieResourceTest {
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
     private static EntityManagerFactory emf;
-     public static MovieFacade mf =  MovieFacade.getFacadeExample(emf);
+     public static MovieFacade mf;
 
     static HttpServer startServer() {
         ResourceConfig rc = ResourceConfig.forApplication(new ApplicationConfig());
@@ -40,6 +40,7 @@ public class MovieResourceTest {
         //This method must be called before you request the EntityManagerFactory
         EMF_Creator.startREST_TestWithDB();
         emf = EMF_Creator.createEntityManagerFactoryForTest();
+        mf =  MovieFacade.getFacadeExample(emf);
 
         httpServer = startServer();
         //Setup RestAssured

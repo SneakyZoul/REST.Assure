@@ -36,13 +36,15 @@ public class MovieFacade {
         return instance;
     }
 
-    private EntityManager getEntityManager() {
+   /* private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
+
+
+    */
     public MovieDTO create(MovieDTO rm){
         Movie rme = new Movie(rm.getMovieName(), rm.getTime());
-        EntityManager em = getEntityManager();
+        EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(rme);
@@ -62,7 +64,7 @@ public class MovieFacade {
     
     //TODO Remove/Change this before use
     public long getRenameMeCount(){
-        EntityManager em = getEntityManager();
+        EntityManager em = emf.createEntityManager();
         try{
             long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM Movie r").getSingleResult();
             return renameMeCount;

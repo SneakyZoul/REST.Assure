@@ -8,6 +8,7 @@ package facades;
 import dtos.MovieDTO;
 import entities.Movie;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -28,6 +29,13 @@ public class Populator {
     }
     
     public static void main(String[] args) {
-        populate();
+        //populate();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+        EntityManager em = emf.createEntityManager();
+        MovieFacade fe = MovieFacade.getFacadeExample(emf);
+        MovieDTO m1 = fe.create(new MovieDTO(new Movie("Rød","22")));
+        System.out.println(m1.getMovieName());
+
+
     }
 }
