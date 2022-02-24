@@ -55,7 +55,7 @@ public class MovieDTO {
 
     @Override
     public String toString() {
-        return "MovieDTO{" + "id=" + id + ", str1=" + str1 + ", str2=" + str2 + '}';
+        return "movieDTO{" + "id=" + id + ", str1=" + str1 + ", str2=" + str2 + '}';
     }
     
     

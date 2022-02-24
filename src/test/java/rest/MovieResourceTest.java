@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 public class MovieResourceTest {
 
-    private static final int SERVER_PORT = 3306;
+    private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://161.35.27.42/api";
     private static Movie r1, r2;
 
@@ -69,7 +69,7 @@ public class MovieResourceTest {
         r2 = new Movie("aaa", "bbb");
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+            em.createNamedQuery("movie.deleteAllRows").executeUpdate();
             em.persist(r1);
             em.persist(r2);
             em.getTransaction().commit();
@@ -81,7 +81,7 @@ public class MovieResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/Movie").then().statusCode(200);
+        given().when().get("/movie").then().statusCode(200);
     }
 
     //This test assumes the database contains two rows

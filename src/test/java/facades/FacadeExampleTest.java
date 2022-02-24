@@ -40,7 +40,7 @@ public class FacadeExampleTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+            em.createNamedQuery("movie.deleteAllRows").executeUpdate();
             em.persist(new Movie("Some txt", "12"));
             em.persist(new Movie("aaa", "12"));
 
