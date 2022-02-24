@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 //@Disabled
 
 public class MovieResourceTest {
-
+/*
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
     private static Movie r1, r2;
@@ -114,4 +114,6 @@ public class MovieResourceTest {
                 .body("all",equalTo(mf.getAll()));
 
     }
+
+ */
 }
