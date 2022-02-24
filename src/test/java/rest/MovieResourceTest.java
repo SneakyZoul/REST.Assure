@@ -1,6 +1,7 @@
 package rest;
 
 import entities.Movie;
+import facades.MovieFacade;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
@@ -30,6 +31,7 @@ public class MovieResourceTest {
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
     private static EntityManagerFactory emf;
+     public static MovieFacade mf =  MovieFacade.getFacadeExample(emf);
 
     static HttpServer startServer() {
         ResourceConfig rc = ResourceConfig.forApplication(new ApplicationConfig());
@@ -79,7 +81,7 @@ public class MovieResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/xxx").then().statusCode(200);
+        given().when().get("/Movie").then().statusCode(200);
     }
 
     //This test assumes the database contains two rows
@@ -87,7 +89,7 @@ public class MovieResourceTest {
     public void testDummyMsg() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/xxx/").then()
+                .get("/Movie/").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("msg", equalTo("Hello World"));
@@ -97,9 +99,19 @@ public class MovieResourceTest {
     public void testCount() throws Exception {
         given()
                 .contentType("application/json")
-                .get("/xxx/count").then()
+                .get("/Movie/count").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("count", equalTo(2));
+    }
+    @Test
+    public void testGetAllMovie()throws Exception{
+        given()
+                .contentType("application/jason")
+                .get("/Movie/all").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("all",equalTo(mf.getAll()));
+
     }
 }
